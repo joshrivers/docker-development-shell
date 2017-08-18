@@ -1,5 +1,8 @@
 FROM ubuntu:16.04
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
 RUN apt-get update && \
     apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
