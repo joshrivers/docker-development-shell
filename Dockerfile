@@ -11,13 +11,13 @@ RUN apt-get update && \
       ca-certificates \
       software-properties-common \
       net-tools \
-      ip-utils-ping \
+      iputils-ping \
       curl \
-      python2.7 \
       openssh-client \
       git && \
-    python2.7 get-pip.py && \
-    pip install aws-cli && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      python2.7 python-pip && \
+    pip install awscli && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
     apt-get update && \
