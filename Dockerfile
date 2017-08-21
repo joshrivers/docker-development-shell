@@ -10,9 +10,14 @@ RUN apt-get update && \
       build-essential \
       ca-certificates \
       software-properties-common \
+      net-tools \
+      ip-utils-ping \
       curl \
+      python2.7 \
       openssh-client \
       git && \
+    python2.7 get-pip.py && \
+    pip install aws-cli && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
     apt-get update && \

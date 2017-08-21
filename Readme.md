@@ -11,6 +11,7 @@ Provisions are made to bring in several external directories to enable full work
 
 - SSH Config
 - npmrc
+- AWS Credentials
 
 ## Usage
 
