@@ -13,6 +13,7 @@ RUN apt-get update && \
       net-tools \
       iputils-ping \
       curl \
+      vim \
       openssh-client \
       git && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -28,6 +29,13 @@ RUN apt-get update && \
     apt-get install -y docker-ce && \
     apt-get autoremove -y && apt-get clean && \
     rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+RUN curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker > /etc/bash_completion.d/docker
+COPY bashrc /root/.bashrc-image
+RUN echo 'if [ -f ~/.bashrc-image ]; then' >>~/.bashrc && \
+    echo '    . ~/.bashrc-image' >>~/.bashrc  && \
+    echo 'fi' >>~/.bashrc
 
 ENV NVM_SYMLINK_CURRENT true
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
