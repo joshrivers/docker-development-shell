@@ -14,6 +14,7 @@ RUN apt-get update && \
       iputils-ping \
       curl \
       vim \
+      silversearcher-ag \
       openssh-client \
       git && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
