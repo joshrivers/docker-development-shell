@@ -33,12 +33,14 @@ RUN apt-get update && \
 
 RUN curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 RUN curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker > /etc/bash_completion.d/docker
+
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+ENV NVM_SYMLINK_CURRENT true
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+RUN /bin/bash -c "\. /root/.nvm/nvm.sh && nvm install lts/*"
+
 COPY bashrc /root/.bashrc-image
 RUN echo 'if [ -f ~/.bashrc-image ]; then' >>~/.bashrc && \
     echo '    . ~/.bashrc-image' >>~/.bashrc  && \
     echo 'fi' >>~/.bashrc
-
-ENV NVM_SYMLINK_CURRENT true
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-RUN /bin/bash -c "\. /root/.nvm/nvm.sh && nvm install lts/*"

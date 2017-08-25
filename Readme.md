@@ -23,3 +23,7 @@ Create a script or alias which performs the following:
        --volume $(pwd):/usr/src/app \
        --volume /var/run/docker.sock:/var/run/docker.sock \
        joshrivers/development-shell
+
+CMD Script to mount local directory:
+
+     cmd /c "docker run --rm -ti -v %cd%:/usr/src/app -v /var/run/docker.sock:/var/run/docker.sock joshrivers/development-shell /bin/bash"
