@@ -14,6 +14,7 @@ RUN apt-get update && \
       iputils-ping \
       curl \
       vim \
+      man \
       silversearcher-ag \
       openssh-client \
       git && \
