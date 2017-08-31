@@ -3,15 +3,16 @@
 A Docker image which provides a development environment inside a container with a number of utility packages installed:
 
 - Docker
+- docker-compose
 - NVM / Node Stable
 - SSH
 - Git
+- AWS CLI
+- AWS ADFS client
+- Silver Searcher (ag)
+- man (for reading git cli help)
 
-Provisions are made to bring in several external directories to enable full workflows from within the container.
-
-- SSH Config
-- npmrc
-- AWS Credentials
+Provisions are made to run a volume-mounted script file for environment detection and configuration of external credentials into the container.
 
 ## Usage
 

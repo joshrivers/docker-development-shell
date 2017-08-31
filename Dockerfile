@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+ARG DOCKER_COMPOSE_VERSION=1.15.0
 
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -15,6 +16,7 @@ RUN apt-get update && \
       curl \
       vim \
       man \
+      bash-completion \
       silversearcher-ag \
       openssh-client \
       git && \
@@ -29,6 +31,8 @@ RUN apt-get update && \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y docker-ce && \
+    curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && \
+    chmod +x /usr/local/bin/docker-compose && \
     apt-get autoremove -y && apt-get clean && \
     rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
