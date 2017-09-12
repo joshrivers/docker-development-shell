@@ -41,6 +41,8 @@ RUN curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components
 RUN curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN git config --global push.default simple
+RUN git config --global core.eol lf
 
 ENV NVM_SYMLINK_CURRENT true
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
